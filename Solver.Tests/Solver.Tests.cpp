@@ -1,4 +1,4 @@
-﻿#include "CppUnitTest.h"
+#include "CppUnitTest.h"
 #include <C:\Учеб\ТКИ-141-2\Stack\Solver\stack.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

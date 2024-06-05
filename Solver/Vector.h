@@ -88,7 +88,7 @@ public:
     * @brief Доступ к элементу по заданному индексу (константная версия).
     * @param index Индекс элемента.
     * @return Константная ссылка на элемент по заданному индексу.
-    * @throws std::out_of_range если индекс выходит за границы.
+    * @throws std::out_of_range если индекс выходит за границы
     */
     const int& operator[](size_t index) const;
 
