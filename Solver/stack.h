@@ -1,88 +1,54 @@
-#ifndef STACK_H
-#define STACK_H
-
-#include <vector>
-#include <string>
+#include "Vector.h"
 #include <initializer_list>
+#include <string>
 
-class Stack {
+
+class stack
+{
 private:
-    std::vector<int> data;
+    vector data;
 
 public:
 
     /**
     * @brief Конструктор по умолчанию.
     */
-    Stack();
+    stack();
 
     /**
-    * @brief Конструктор со списком инициализации.
-    * @param initList Список инициализации элементов стека.
+    * @brief Конструктор с инициализатором списка.
+    * @param initList Список значений для инициализации стека.
     */
-    Stack(std::initializer_list<int> initList);
+    stack(std::initializer_list<int> initList);
 
     /**
-    * @brief Конструктор копирования.
-    * @param other Другой объект Stack для копирования.
-    */
-    Stack(const Stack& other);
-
-    /**
-    * @brief Конструктор перемещения.
-    * @param other Другой объект Stack для перемещения.
-    */
-    Stack(Stack&& other) noexcept;
-
-    /**
-    * @brief Деструктор
-    */
-    ~Stack();
-
-    /**
-    * @brief Оператор присваивания копированием.
-    * @param other Другой объект Stack для копирования.
-    * @return Ссылка на текущий объект Stack.
-    */
-    Stack& operator=(const Stack& other);
-
-    /**
-    * @brief Оператор присваивания перемещением.
-    * @param other Другой объект Stack для перемещения.
-    * @return Ссылка на текущий объект Stack.
-    */
-    Stack& operator=(Stack&& other) noexcept;
-
-    /**
-    * @brief Метод для добавления элемента в стек.
-    * @param value Значение добавляемого элемента
+    * @brief Добавляет элемент в стек.
+    * @param value Значение для добавления.
     */
     void push(int value);
 
     /**
-    * @brief Метод для удаления элемента из стека.
-    * @throw std::out_of_range Если стек пуст.
+    * @brief Удаляет верхний элемент из стека.
+    * @throws std::out_of_range если стек пуст.
     */
     void pop();
 
     /**
-    * @brief Метод для чтения головного элемента стека.
-    * @return Значение головного элемента.
-    * @throw std::out_of_range Если стек пуст.
+    * @brief Возвращает верхний элемент стека без удаления.
+    * @return Верхний элемент стека.
+    * @throws std::out_of_range если стек пуст.
     */
     int peek() const;
 
     /**
-    * @brief Метод для проверки, пуст ли стек.
+    * @brief Проверяет, пуст ли стек.
     * @return true, если стек пуст, иначе false.
     */
-    bool isEmpty() const;
+    bool is_empty() const;
 
     /**
-     * @brief Метод для получения строки с содержимым стека.
-     * @return Строка с элементами стека.
-     */
-    std::string toString() const;
+    * @brief Возвращает строковое представление стека.
+    * @return Строка, представляющая стек.
+    */
+    std::string to_string() const;
 };
-
-#endif // STACK_H

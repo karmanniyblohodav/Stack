@@ -2,56 +2,49 @@
 #include <stdexcept>
 #include <sstream>
 
-Stack::Stack() : data() {}
 
-Stack::Stack(std::initializer_list<int> initList) : data(initList) {}
-
-Stack::Stack(const Stack& other) : data(other.data) {}
-
-Stack::Stack(Stack&& other) noexcept : data(std::move(other.data)) {}
-
-Stack::~Stack() {}
-
-Stack& Stack::operator=(const Stack& other) {
-    if (this != &other) {
-        data = other.data;
+stack::stack(std::initializer_list<int> initList) : data()
+{
+    for (int value : initList)
+    {
+        data.push_back(value);
     }
-    return *this;
 }
 
-Stack& Stack::operator=(Stack&& other) noexcept {
-    if (this != &other) {
-        data = std::move(other.data);
-    }
-    return *this;
-}
-
-void Stack::push(int value) {
+void stack::push(int value)
+{
     data.push_back(value);
 }
 
-void Stack::pop() {
-    if (isEmpty()) {
-        throw std::out_of_range("Stack is empty");
+void stack::pop()
+{
+    if (data.is_empty())
+    {
+        throw std::out_of_range("Стек пуст");
     }
     data.pop_back();
 }
 
-int Stack::peek() const {
-    if (isEmpty()) {
-        throw std::out_of_range("Stack is empty");
+int stack::peek() const
+{
+    if (data.is_empty())
+    {
+        throw std::out_of_range("Стек пуст");
     }
-    return data.back();
+    return data[data.get_size() - 1];
 }
 
-bool Stack::isEmpty() const {
-    return data.empty();
+bool stack::is_empty() const
+{
+    return data.is_empty();
 }
 
-std::string Stack::toString() const {
+std::string stack::to_string() const
+{
     std::ostringstream oss;
-    for (const int& value : data) {
-        oss << value << " ";
+    for (size_t i = 0; i < data.get_size(); ++i)
+    {
+        oss << data[i] << " ";
     }
     return oss.str();
 }
